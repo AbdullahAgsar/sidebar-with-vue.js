@@ -26,61 +26,93 @@ main{
     width: 100%;
     position: relative;
     height: 100%;
+    overflow: hidden;
 
     aside{
         width: $size;
         height: 100%;
         padding: 1em 0;
+        transition: 300ms width ease-out;
 
-        ul.menu{
+        .aside-inner{
             background-color: $primary-color;
-            height: 100%;
             border-radius: 0 20px 20px 0;
-            padding: 2em 0;
+            height: 100%;
 
-            li{
+            .sidebar-title{
                 padding: 1em;
-                border-top: 1px solid white;
-                position: relative;
-                overflow-x: hidden;
+                display: flex;
+                align-items: center;
+                gap: 1em;
                 color: white;
-                font-size: 1.1em;
+                font-size: 1.2em;
                 cursor: pointer;
-                transition: 250ms background-color;
-
-                a{
+            }
+    
+            ul.menu{
+                height: 100%;
+    
+                li{
+                    padding: 1em;
+                    border-top: 1px solid white;
+                    position: relative;
+                    overflow-x: hidden;
                     color: white;
-                    display: flex;
-                    align-items: center;
-                    gap: 1em;
-                    text-decoration: none;
-                }
-
-                &:last-child{
-                    border-bottom: 1px solid white;
-                }
-
-                &::after{
-                    content: "";
-                    width: 40px;
-                    height: 100%;
-                    display: flex;
-                    background-color: $secondary-color;
-                    position: absolute;
-                    top: 0;
-                    right: -40px;
-                    border-radius: 100% 0 0 100% ;
-                    transition: 250ms width;
-                }
-
-                &:hover{
-                    background-color: $secondary-color;
-
+                    font-size: 1.1em;
+                    cursor: pointer;
+                    transition: 250ms background-color;
+    
+                    a{
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: nowrap;
+                        justify-content: flex-start;
+                        gap: 1em;
+                        text-decoration: none;
+                        max-height: 24px;
+                        overflow-y: hidden;
+                        overflow-x: hidden;
+                        position: relative;
+                        z-index: 2;
+                    }
+    
+                    &:last-child{
+                        border-bottom: 1px solid white;
+                    }
+    
                     &::after{
-                        background-color: $primary-color;
-                        width: 70px;
+                        content: "";
+                        width: 40px;
+                        height: 100%;
+                        display: flex;
+                        background-color: $secondary-color;
+                        position: absolute;
+                        top: 0;
+                        right: -40px;
+                        border-radius: 100% 0 0 100% ;
+                        transition: 250ms right;
+                        z-index: 1;
+                    }
+    
+                    &:hover{
+                        background-color: $secondary-color;
+    
+                        &::after{
+                            background-color: $primary-color;
+                            right: -20px;
+                        }
                     }
                 }
+            }
+        }
+
+        &.open{
+            width: 3.4em;
+            overflow: hidden;
+
+            .menu-text{
+                visibility: hidden;
             }
         }
     }

@@ -22,19 +22,32 @@ main {
   width: 100%;
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 main aside {
   width: 300px;
   height: 100%;
   padding: 1em 0;
+  transition: 300ms width ease-out;
 }
-main aside ul.menu {
+main aside .aside-inner {
   background-color: #7B2CBF;
-  height: 100%;
   border-radius: 0 20px 20px 0;
-  padding: 2em 0;
+  height: 100%;
 }
-main aside ul.menu li {
+main aside .aside-inner .sidebar-title {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+main aside .aside-inner ul.menu {
+  height: 100%;
+}
+main aside .aside-inner ul.menu li {
   padding: 1em;
   border-top: 1px solid white;
   position: relative;
@@ -44,17 +57,24 @@ main aside ul.menu li {
   cursor: pointer;
   transition: 250ms background-color;
 }
-main aside ul.menu li a {
+main aside .aside-inner ul.menu li a {
   color: white;
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   gap: 1em;
   text-decoration: none;
+  max-height: 24px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 2;
 }
-main aside ul.menu li:last-child {
+main aside .aside-inner ul.menu li:last-child {
   border-bottom: 1px solid white;
 }
-main aside ul.menu li::after {
+main aside .aside-inner ul.menu li::after {
   content: "";
   width: 40px;
   height: 100%;
@@ -64,14 +84,22 @@ main aside ul.menu li::after {
   top: 0;
   right: -40px;
   border-radius: 100% 0 0 100%;
-  transition: 250ms width;
+  transition: 250ms right;
+  z-index: 1;
 }
-main aside ul.menu li:hover {
+main aside .aside-inner ul.menu li:hover {
   background-color: #9D4EDD;
 }
-main aside ul.menu li:hover::after {
+main aside .aside-inner ul.menu li:hover::after {
   background-color: #7B2CBF;
-  width: 70px;
+  right: -20px;
+}
+main aside.open {
+  width: 3.4em;
+  overflow: hidden;
+}
+main aside.open .menu-text {
+  visibility: hidden;
 }
 main .content {
   padding: 1em 1.5em;

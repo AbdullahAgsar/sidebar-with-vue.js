@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--Add vue.js-->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <!--Font Avesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css" 
+    integrity="sha512-ykRBEJhyZ+B/BIJcBuOyUoIxh0OfdICfHPnPfBy7eIiyJv536ojTCsgX8aqrLQ9VJZHGz4tvYyzOM0lkgmQZGw==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="index.css">
+
+    <title>Sidebar With Vue.js</title>
+</head>
+<body>
+    <main>
+        <aside>
+            <ul class="menu" id="sidebar">
+                <li v-for="menu in menus" :key="menu.id">
+                    <a href="#" :title="menu.menuName">
+                        <i :class=" menu.icons "></i>
+                        <p class="menu-text">
+                            {{menu.menuName}}
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div class="content">
+            content
+        </div>
+    </main>
+
+    <script src="./index.js"></script>
+</body>
+</html>

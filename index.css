@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: none;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background: url(./bg.jpg) no-repeat 100%;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  height: 100%;
+}
+main aside {
+  width: 300px;
+  height: 100%;
+  padding: 1em 0;
+}
+main aside ul.menu {
+  background-color: #7B2CBF;
+  height: 100%;
+  border-radius: 0 20px 20px 0;
+  padding: 2em 0;
+}
+main aside ul.menu li {
+  padding: 1em;
+  border-top: 1px solid white;
+  position: relative;
+  overflow-x: hidden;
+  color: white;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 250ms background-color;
+}
+main aside ul.menu li a {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  text-decoration: none;
+}
+main aside ul.menu li:last-child {
+  border-bottom: 1px solid white;
+}
+main aside ul.menu li::after {
+  content: "";
+  width: 40px;
+  height: 100%;
+  display: flex;
+  background-color: #9D4EDD;
+  position: absolute;
+  top: 0;
+  right: -40px;
+  border-radius: 100% 0 0 100%;
+  transition: 250ms width;
+}
+main aside ul.menu li:hover {
+  background-color: #9D4EDD;
+}
+main aside ul.menu li:hover::after {
+  background-color: #7B2CBF;
+  width: 70px;
+}
+main .content {
+  padding: 1em 1.5em;
+  width: calc(100% - 300px);
+  height: 100%;
+}
+
+/*
+
+
+                &::before{
+                    content: "";
+                    width: 20px;
+                    height: 50%;
+                    display: flex;
+                    background-color: white;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: 0 0 0 100%;
+                }
+*/
+
+/*# sourceMappingURL=index.css.map */

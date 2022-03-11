@@ -1,10 +1,69 @@
+class menus {
+    constructor(id,menuName,icons) {
+      this.menuName = menuName;
+      this.id=id;
+      this.icons=icons;
+    }
+  }
+
 const sidebar = Vue.createApp({
     data(){
         return{
+            search: '',
+
             navOpen : false,
             //openMenu : false,
 
-            menus : [
+            menuList : [
+                new menus(
+                    '1',
+                    "Home",
+                    "fas fa-home"
+                ),
+                new menus(
+                    '2',
+                    "Posts",
+                    "fas fa-comments"
+                ),
+                new menus(
+                    '3',
+                    "News",
+                    "fas fa-newspaper"
+                ),
+                new menus(
+                    '4',
+                    "Announcements",
+                    "fas fa-bullhorn"
+                ),
+                new menus(
+                    '5',
+                    "My Profile",
+                    "fas fa-user"
+                ),
+                new menus(
+                    '6',
+                    "Settings",
+                    "fas fa-cog"
+                ),
+                
+            ]
+        };
+    },
+    computed: {
+        filteredList() {
+          return this.menuList.filter(menus => {
+            return menus.menuName.toLowerCase().includes(this.search.toLowerCase())
+          })
+        }
+    }
+    /*
+    methods:{
+        openNextMenu(event){
+            //const allShow = document.querySelectorAll(".show")
+            event.currentTarget.classList.toggle("show");
+        },
+    },
+    
                 {
                     id:1,
                     menuName: "Home",
@@ -35,15 +94,5 @@ const sidebar = Vue.createApp({
                     menuName: "Settings",
                     icons : "fas fa-cog"
                 },
-            ]
-        };
-    },
-    /*
-    methods:{
-        openNextMenu(event){
-            //const allShow = document.querySelectorAll(".show")
-            event.currentTarget.classList.toggle("show");
-        },
-    },
     */
 }).mount('#sidebar');

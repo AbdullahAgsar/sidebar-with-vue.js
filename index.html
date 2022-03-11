@@ -24,11 +24,20 @@
         <aside :class="{ open : navOpen }">
             <div class="aside-inner">
                 <div class="sidebar-title" @click=" navOpen = !navOpen">
-                    <i class="fas fa-bars"></i>
-                    <p class="menu-text">Menus</p>
+                    <div class="logo">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <p class="menu-text">Abdullah Agsar</p>
+                    <i class="fas fa-chevron-left"></i>
                 </div>
+
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" v-model="search" placeholder="Search...">
+                </div>
+
                 <ul class="menu">
-                    <li v-for="menu in menus" :key="menu.id">
+                    <li v-for="menu in filteredList" :key="menu.id">
                         <a href="#" :title="menu.menuName">
                             <i :class=" menu.icons "></i>
                             <p class="menu-text">

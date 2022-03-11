@@ -1,6 +1,8 @@
-$size : 300px;
-$primary-color: #7B2CBF;
-$secondary-color: #9D4EDD;
+$size : 270px;
+$bg-color: #e4e9f7;
+$primary-color: #fff;
+$secondary-color: #695cfe;
+$text-color : #555;
 
 *{
     margin: 0;
@@ -17,7 +19,7 @@ html,body{
 }
 
 body{
-    background: url(./bg.jpg) no-repeat 100%;
+    background: $bg-color;
 }
 
 main{
@@ -31,76 +33,109 @@ main{
     aside{
         width: $size;
         height: 100%;
-        padding: 1em 0;
         transition: 300ms width ease-out;
 
         .aside-inner{
             background-color: $primary-color;
-            border-radius: 0 20px 20px 0;
             height: 100%;
+            padding: 1em;
+            border-radius: 0 30px 30px 0;
 
             .sidebar-title{
-                padding: 1em;
                 display: flex;
                 align-items: center;
-                gap: 1em;
-                color: white;
+                color: $text-color;
                 font-size: 1.2em;
                 cursor: pointer;
+                padding-right: 1em;
+                position: relative;
+
+                .menu-text{
+                    font-size: .9em;
+                }
+
+                .logo{
+                    padding: 1em;
+                }
+
+                .fas.fa-chevron-left{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%) rotate(0);
+                    right: 10px;
+                    padding: 3px 7px;
+                    border-radius: 50%;
+                    transition: 300ms all;
+                    animation: sidebar-animation infinite 1.2s alternate ease-out;
+                }
+            }
+
+            .search-bar{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                background-color: $bg-color;
+                padding: .7em 1em;
+                border-radius: 10px;
+                gap: 1em;
+                overflow-x: hidden;
+                margin: 10px 0;
+
+                i{
+                    color: $text-color;
+                    padding-left: 3px;
+                }
+                input{
+                    background-color: $bg-color;
+                    font-size: 1em;
+                    width: calc(100% - 2em);
+                    color: $text-color;
+                    padding: 6px 3px;
+
+                    &:focus{
+                        outline: none;
+                    }
+                }
             }
     
             ul.menu{
                 height: 100%;
     
                 li{
-                    padding: 1em;
-                    border-top: 1px solid white;
+                    padding: .8em 1em;
                     position: relative;
                     overflow-x: hidden;
-                    color: white;
+                    color: $text-color;
                     font-size: 1.1em;
                     cursor: pointer;
                     transition: 250ms background-color;
+                    border-radius: 10px;
+                    margin: .15em 0;
     
                     a{
-                        color: white;
+                        color: $text-color;
                         display: flex;
                         align-items: center;
                         flex-wrap: nowrap;
                         justify-content: flex-start;
                         gap: 1em;
                         text-decoration: none;
-                        max-height: 24px;
+                        max-height: 20.6px;
                         overflow-y: hidden;
                         overflow-x: hidden;
                         position: relative;
                         z-index: 2;
-                    }
-    
-                    &:last-child{
-                        border-bottom: 1px solid white;
-                    }
-    
-                    &::after{
-                        content: "";
-                        width: 40px;
-                        height: 100%;
-                        display: flex;
-                        background-color: $secondary-color;
-                        position: absolute;
-                        top: 0;
-                        right: -40px;
-                        border-radius: 100% 0 0 100% ;
-                        transition: 250ms right;
-                        z-index: 1;
+
+                        .menu-text{
+                            font-size: .9em;
+                        }
                     }
     
                     &:hover{
                         background-color: $secondary-color;
     
-                        &::after{
-                            background-color: $primary-color;
-                            right: -20px;
+                        a{
+                            color: white;
                         }
                     }
                 }
@@ -108,19 +143,47 @@ main{
         }
 
         &.open{
-            width: 3.4em;
+            width: 5.4em;
             overflow: hidden;
+
+            .aside-inner{
+                border-radius: 0;
+            }
+
+            & + .content{
+                width: calc(100% - 5.4em);
+            }
 
             .menu-text{
                 visibility: hidden;
+            }
+
+            .sidebar-title{
+
+                .fas.fa-chevron-left{
+                    background-color: $secondary-color;
+                    color: white;
+                    transform: translateY(-50%) rotate(180deg);
+                    right: 15px;
+                }
             }
         }
     }
 
     .content{
-        padding: 1em 1.5em;
         width: calc(100% - #{$size});
         height: 100%;
+        transition: 250ms width ease;
+        padding: 1em 1.5em;
+    }
+}
+
+@keyframes sidebar-animation {
+    from{
+        right: 0;
+    }
+    to{
+        right: 15px;
     }
 }
 
@@ -132,10 +195,24 @@ main{
                     width: 20px;
                     height: 50%;
                     display: flex;
-                    background-color: white;
+                    background-color: $text-color;
                     position: absolute;
                     bottom: 0;
                     right: 0;
                     border-radius: 0 0 0 100%;
+                }
+
+                &::after{
+                    content: "";
+                    width: 40px;
+                    height: 100%;
+                    display: flex;
+                    background-color: $secondary-color;
+                    position: absolute;
+                    top: 0;
+                    right: -40px;
+                    border-radius: 100% 0 0 100% ;
+                    transition: 250ms right;
+                    z-index: 1;
                 }
 */
